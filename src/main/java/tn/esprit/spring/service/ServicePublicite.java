@@ -6,78 +6,47 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.ServiceInterface.IPubliciteService;
 import tn.esprit.spring.entities.Publicite;
 import tn.esprit.spring.repository.PubliciteRepository;
 
+@Service
 public class ServicePublicite implements IPubliciteService {
 	@Autowired
 	PubliciteRepository pr;
 	@Override
 	public Publicite save(Publicite publicite) {
-		// TODO Auto-generated method stub
-		return pr.save(publicite);
+		 pr.save(publicite);
+		return publicite;
 	}
+
 	@Override
 	public List<Publicite> retrieveAllPublicite() {
-		// TODO Auto-generated method stub
 		List<Publicite> publicite = (List<Publicite>) pr.findAll();
 		return publicite;
-
 	}
 
 	@Override
 	public void deletePublicite(long id) {
-		// TODO Auto-generated method stub
-Optional<Publicite> publicite = pr.findById(id);
-	    
-	    if(publicite.isPresent()) 
-	    {
-	        pr.deleteById(id);}	
-	
+		Optional<Publicite> publicite = pr.findById(id);
+
+		  if(publicite.isPresent()) 
+		    {
+		        pr.deleteById(id);}	
+		
+				
 	}
 
-	/*@Override
-	public Publicite updatePublicite(Publicite publicite) {
-		// TODO Auto-generated method stub
-		Optional<Publicite> pub = pr.findById(publicite.getId());
-		if(pub.isPresent()) 
-	    {
-		     Publicite newPublicite= pub.get();
-		     newPublicite.setDatedebut(publicite.getDatedebut());
-		     newPublicite.setDatefin(publicite.getDatefin());
-		     newPublicite.setId(publicite.getId());
-		     newPublicite.setImage(publicite.getImage());
-		     newPublicite.setNom(publicite.getNom());
-	        return newPublicite;
-	    } else {
-	    	publicite = pr.save(publicite);
-	         
-	        return publicite;
-	    }}*/
-	
-	@Autowired
-	PubliciteRepository publiciteRepository;
-	
 	@Override
-	public List<Object[]> getTopPub(){
-		return publiciteRepository.TopPub();
+	public Publicite updatePublicite(Publicite publicite) {
+		 pr.save(publicite);
+			return publicite;
 	}
-	
-	@Override
-	public Publicite updatePublicite(Publicite publicite) {
-		// TODO Auto-generated method stub
-		return pr.save(publicite);
 
+	@Override
+	public Publicite retrievePublicite(Long id) {
+		return pr.findById(id).get();
+	}
 }
-	@Override
-	public tn.esprit.spring.Entities.Publicite save(tn.esprit.spring.Entities.Publicite publicite) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public tn.esprit.spring.Entities.Publicite updatePublicite(tn.esprit.spring.Entities.Publicite publicite) {
-		// TODO Auto-generated method stub
-		return null;
-	}
