@@ -17,7 +17,10 @@ public class ServicePublicite implements IPubliciteService {
 	@Autowired
 	PubliciteRepository pr;
 	@Override
-	public Publicite save(Publicite publicite) {
+	public Publicite save(Publicite publicite ,  Long idUser) {
+		
+		//user = userRespo.findById(idUser)
+		// publicite.setUser(user)
 		 pr.save(publicite);
 		return publicite;
 	}

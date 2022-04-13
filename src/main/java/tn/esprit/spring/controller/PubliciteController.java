@@ -36,11 +36,11 @@ public class PubliciteController {
 	return ServicePublicite.retrievePublicite(idPublicite);
 	}
 
-	@PostMapping("/add-publicite")
+	@PostMapping("/add-publicite/{user-id}")
 	@ResponseBody
-	public Publicite addPublicite(@RequestBody Publicite o)
+	public Publicite addPublicite(@PathVariable("user-id") Long idUser,@RequestBody Publicite o)
 	{
-		Publicite publicite= ServicePublicite.save(o);
+		Publicite publicite= ServicePublicite.save(o,idUser);
 	return publicite;
 	}
 	@DeleteMapping("/remove-publicite/{publicite-id}")
