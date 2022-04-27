@@ -53,9 +53,6 @@ public class Publicite  implements Serializable{
 	private Cible cible;
 
 	
-	
-
-	
 	@ManyToOne
 	private User user;
 

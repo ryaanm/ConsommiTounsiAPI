@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.spring.ServiceInterface.IPubliciteService;
 import tn.esprit.spring.entities.Publicite;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/publicite")
-@CrossOrigin(origins = "http://localhost:4200")
 public class PubliciteController {
 
 	@Autowired
