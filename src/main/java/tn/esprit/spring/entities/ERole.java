@@ -7,4 +7,3 @@ public enum ERole {
     ROLE_ADMIN
 }
 
-}
