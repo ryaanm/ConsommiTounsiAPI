@@ -10,17 +10,23 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.ServiceInterface.IPubliciteService;
 import tn.esprit.spring.entities.Publicite;
+import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repository.PubliciteRepository;
+import tn.esprit.spring.repository.UserRepository;
 
 @Service
 public class ServicePublicite implements IPubliciteService {
 	@Autowired
 	PubliciteRepository pr;
+	
+	@Autowired
+	UserRepository userRepository;
 	@Override
-	public Publicite save(Publicite publicite ,  Long idUser) {
+	public Publicite save(Publicite publicite, long idUser ) {
 		
-		//user = userRespo.findById(idUser)
-		// publicite.setUser(user)
+		User	user = userRepository.findById(idUser).orElse(null);
+	
+		publicite.setUser(user);
 		 pr.save(publicite);
 		return publicite;
 	}
@@ -32,7 +38,7 @@ public class ServicePublicite implements IPubliciteService {
 	}
 
 	@Override
-	public void deletePublicite(long id) {
+	public void deletePublicite(Long id) {
 		Optional<Publicite> publicite = pr.findById(id);
 
 		  if(publicite.isPresent()) 

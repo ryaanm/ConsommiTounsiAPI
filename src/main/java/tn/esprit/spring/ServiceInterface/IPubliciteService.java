@@ -5,9 +5,9 @@ import java.util.List;
 import tn.esprit.spring.entities.Publicite;
 
 public interface IPubliciteService {
-	public Publicite save(Publicite publicite,  Long idUser);
+	public Publicite save(Publicite publicite, long idUser);
 	List<Publicite> retrieveAllPublicite();
 	Publicite retrievePublicite (Long id);
-	void deletePublicite(long id);
+	void deletePublicite(Long id);
 	Publicite updatePublicite(Publicite publicite);
 }
