@@ -16,14 +16,14 @@ public class Role {
 
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
-	private ERole erole;
+	private ERole name;
 
 	public Role() {
 
 	}
 
-	public Role(ERole erole) {
-		this.erole = erole;
+	public Role(ERole name) {
+		this.name = name;
 	}
 
 	public Integer getId() {
@@ -35,10 +35,10 @@ public class Role {
 	}
 
 	public ERole getName() {
-		return erole;
+		return name;
 	}
 
-	public void setName(ERole erole) {
-		this.erole = erole;
+	public void setName(ERole name) {
+		this.name = name;
 	}
 }
