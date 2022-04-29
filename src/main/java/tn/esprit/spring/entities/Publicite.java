@@ -52,8 +52,7 @@ public class Publicite  implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Cible cible;
 
-	
-	@ManyToOne
-	private User user;
+	@ManyToOne(cascade = CascadeType.ALL)
+	User user;
 
 }

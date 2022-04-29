@@ -9,6 +9,7 @@ import tn.esprit.spring.entities.ERole;
 import tn.esprit.spring.entities.Role;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
-	Optional<Role> findByName(ERole name);
+	
+	//Optional<Role> findByName(ERole name);
 
 }
