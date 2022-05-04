@@ -1,6 +1,10 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 16
-Implementation-Title: ConsommiTounsiAPI
-Implementation-Version: 0.1
+Implementation-Title: consommi_tounssi
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: ouss
+Implementation-Vendor-Id: tn.esprit
+Build-Jdk: 1.8.0_60
+Implementation-URL: https://spring.io/projects/spring-boot/consommi_to
+ unssi
 Created-By: Maven Integration for Eclipse
 
