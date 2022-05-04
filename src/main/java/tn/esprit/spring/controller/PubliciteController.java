@@ -41,8 +41,9 @@ public class PubliciteController {
 	}
 	//method = RequestMethod.POST,
 	//@PathVariable("user-id") Long idUser,
-	@PostMapping()
-	@RequestMapping( value = "/add-publicite/{idUser}")
+	//	@RequestMapping( value = ")
+
+	@PostMapping("/add-publicite/{idUser}")
 	@ResponseBody
 	public Publicite addPublicite(@RequestBody Publicite o, @PathVariable long idUser)
 	{
@@ -50,7 +51,9 @@ public class PubliciteController {
 		Publicite publicite= ServicePublicite.save(o,idUser);
 		return publicite;
 	}
+
 	@DeleteMapping("/remove-publicite/{publicite-id}")
+	@ResponseBody
 	public void removePublicite(@PathVariable("publicite-id") Long idPublicite) {
 		ServicePublicite.deletePublicite(idPublicite);
 	}

@@ -27,8 +27,8 @@ public class ServicePublicite implements IPubliciteService {
 		User	user = userRepository.findById(idUser).orElse(null);
 	
 		publicite.setUser(user);
-		 pr.save(publicite);
-		return publicite;
+		 
+		return pr.save(publicite);
 	}
 
 	@Override
