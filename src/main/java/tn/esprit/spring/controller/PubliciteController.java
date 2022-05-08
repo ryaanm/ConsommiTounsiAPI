@@ -75,4 +75,8 @@ public class PubliciteController {
 			@PathVariable(value = "dateF")String dateFin, String typePub) throws ParseException {
 		return ServicePublicite.TotalCost(canal, dateDebut, dateFin);
 }
+	@GetMapping("/retrieve-PubliciteByNom/{publicite-nom}")
+	public List <Publicite> retrievePubliciteByNom(@PathVariable("publicite-nom") String nom) {
+		return ServicePublicite.retrievePubliciteByName(nom);
+	}
 }

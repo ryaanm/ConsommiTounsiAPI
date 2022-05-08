@@ -108,4 +108,10 @@ public class ServicePublicite implements IPubliciteService {
 		cost += DaysCost(dateDebut, dateFin);
 		return cost;
 	}
+	@Override
+	public List<Publicite> retrievePubliciteByName(String nom) {
+		
+		return pr.PubliciteByName(nom);
+	}
+
 }

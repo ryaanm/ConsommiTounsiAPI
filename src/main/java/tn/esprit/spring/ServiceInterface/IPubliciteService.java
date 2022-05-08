@@ -15,4 +15,5 @@ public interface IPubliciteService {
 	public float CanalCost (String Canal);
 	public float DaysCost(String dateDebut, String dateFin);
 	public float TotalCost(String Canal, String dateDebut, String dateFin);
+	List<Publicite> retrievePubliciteByName(String nom);
 }
