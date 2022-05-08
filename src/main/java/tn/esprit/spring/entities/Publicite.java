@@ -54,5 +54,7 @@ public class Publicite  implements Serializable{
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	User user;
-
+	public  float setPrixPublicite(float prixPublicite) {
+		return this.prixPublicite = prixPublicite;
+	}
 }

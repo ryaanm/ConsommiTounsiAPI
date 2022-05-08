@@ -67,31 +67,45 @@ public class ServicePublicite implements IPubliciteService {
 		if ((Canal.equals("TWITTER"))){
 			return 100;		
 		} if((Canal.equals("FACEBOOK")|| (Canal.equals("INSTAGRAM")))) {
-			return 200;
+			return 150;
 		}
-		else return 300;
+		else return 200;
 	}
+		public float diffDays (String dateDebut, String dateFin) {
+			SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+			float diffDays = 0;
+			try {
+				Date dateD = sdf.parse(dateDebut);
+				Date dateF = sdf.parse(dateFin);
+				long differenceTime
+	            = dateF.getTime() - dateD.getTime();
+
+				  diffDays  = (differenceTime/ (1000 * 60 * 60 * 24)) % 365;
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			return diffDays;
+			
+		}
 
 	@Override
 	public float DaysCost(String dateDebut, String dateFin) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		try {
-			Date dateD = sdf.parse(dateDebut);
-			Date dateF = sdf.parse(dateFin);
-			long differenceTime
-            = dateF.getTime() - dateD.getTime();
-
-			
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		float diff = diffDays(dateDebut, dateFin);
+		float cost = 0;
+		if(diff <= 30) {
+			return cost = diff * 5;
+		}if(diff >= 30 && diff <= 90) {
+			return cost = diff * 10;
+		} else {
+			return cost = diff * 15;
 		}
-		return 0;
 	}
 
 	@Override
-	public float TotalCost(String Canal, Date dateDebut, Date dateFin) {
-		// TODO Auto-generated method stub
-		return 0;
+	public float TotalCost(String Canal, String dateDebut, String dateFin) {
+		float cost = CanalCost(Canal);
+		cost += DaysCost(dateDebut, dateFin);
+		return cost;
 	}
 }

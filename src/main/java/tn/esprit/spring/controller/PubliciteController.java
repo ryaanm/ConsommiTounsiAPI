@@ -3,6 +3,7 @@ package tn.esprit.spring.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ParseException;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import tn.esprit.spring.ServiceInterface.IPubliciteService;
 import tn.esprit.spring.entities.Publicite;
@@ -47,8 +49,12 @@ public class PubliciteController {
 	@ResponseBody
 	public Publicite addPublicite(@RequestBody Publicite o, @PathVariable long idUser)
 	{
-
+		
 		Publicite publicite= ServicePublicite.save(o,idUser);
+		publicite.setPrixPublicite(ServicePublicite.TotalCost(publicite.getCanal().toString(),publicite
+				.getDateDebut().toString(),publicite.getDateFin().toString()));
+		 publicite= ServicePublicite.save(o,idUser);
+
 		return publicite;
 	}
 
@@ -63,4 +69,10 @@ public class PubliciteController {
 	public Publicite modifyPublicite(@RequestBody Publicite publicite) {
 		return ServicePublicite.updatePublicite(publicite);
 	}
+	@PostMapping("/totalCost/{Canal}/{dateD}/{dateF}/")
+	@ResponseBody
+	public float totalCost(@PathVariable(value = "Canal") String canal,@PathVariable(value = "dateD") String dateDebut,
+			@PathVariable(value = "dateF")String dateFin, String typePub) throws ParseException {
+		return ServicePublicite.TotalCost(canal, dateDebut, dateFin);
+}
 }
