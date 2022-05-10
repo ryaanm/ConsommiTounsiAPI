@@ -12,7 +12,6 @@ import tn.esprit.spring.entities.Publicite;
 
 public interface PubliciteRepository extends JpaRepository<Publicite, Long>{
 	
-	List<Publicite>retrievePubliciteByName(String nom);
 
 	@Query("SELECT t FROM Publicite t WHERE t.nom LIKE %:nom%")
 	    List<Publicite> PubliciteByName(@Param("nom") String nom);
