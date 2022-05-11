@@ -30,11 +30,22 @@ public class Charite  implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+<<<<<<< Updated upstream
 	private long idCharite;
 	private String typecharite;
 	private Date dateDebut;
 	private Date dateFin;
 	private float montantpaye;
+=======
+	private long id_charite;
+	private String nom;
+	private Date dateDebut;
+	private Date dateFin;
+	private float montantpaye;
+	private String typecharite;
+	private String description;
+	private long idUser;
+>>>>>>> Stashed changes
 
 
 }
