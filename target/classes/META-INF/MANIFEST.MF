@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
+Built-By: ziedn
+Build-Jdk: 16.0.2
 Implementation-Title: ConsommiTounsiAPI
 Implementation-Version: 0.1
-Built-By: ASUS
 Implementation-Vendor-Id: tn.esprit.spring
-Build-Jdk: 1.8.0_291
-Implementation-URL: https://spring.io/projects/spring-boot/ConsommiTou
- nsiAPI
+Implementation-URL: https://spring.io/projects/spring-boot/ConsommiTouns
+ iAPI
 Created-By: Maven Integration for Eclipse
 
