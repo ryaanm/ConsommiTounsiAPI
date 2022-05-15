@@ -13,18 +13,19 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SwaggerConfig {
-@Bean
+	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
-		.select()
-		.apis(RequestHandlerSelectors.any())
-		.paths(PathSelectors.any())
-		.build().apiInfo(apiInfo());
-		}
-		private ApiInfo apiInfo () {
+				.select()
+				.apis(RequestHandlerSelectors.any())
+				.paths(PathSelectors.any())
+				.build().apiInfo(apiInfo());
+	}
+	
+	private ApiInfo apiInfo () {
 		return new ApiInfoBuilder()
-		.title("Swagger Configuration for tpStockProject")
-		.description("\"Spring Boot Swagger configuration\"")
-		.version("1.1.0").build();
-		}
+				.title("Swagger Configuration for tpStockProject")
+				.description("\"Spring Boot Swagger configuration\"")
+				.version("1.1.0").build();
+	}
 }
