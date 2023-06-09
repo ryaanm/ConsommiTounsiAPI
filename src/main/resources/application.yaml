@@ -1,0 +1,28 @@
+CompliantTimezoneShift: true&useLegacyDatetimeCode=false&serverTimezone=UTC
+logging:
+  file: 
+    name: logs/springboot.log
+  level:
+    tn:
+      esprit:
+        repository: warn
+        service: debug
+server:
+  port: 8080
+  servlet:
+    context-path: /SpringMVC
+spring:
+  datasource:
+    password: ''
+    url: jdbc:mysql://localhost:3306/Consommi?useUnicode=true&useJDBC
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER

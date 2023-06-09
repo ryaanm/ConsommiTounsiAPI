@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
@@ -11,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.spring.Mail.EmailServiceImpl;
 import tn.esprit.spring.ServiceInterface.IPubliciteService;
 import tn.esprit.spring.entities.Publicite;
 import tn.esprit.spring.entities.User;
@@ -21,7 +23,8 @@ import tn.esprit.spring.repository.UserRepository;
 public class ServicePublicite implements IPubliciteService {
 	@Autowired
 	PubliciteRepository pr;
-	
+	@Autowired
+	EmailServiceImpl emailService;
 	@Autowired
 	UserRepository userRepository;
 	@Override
@@ -30,9 +33,12 @@ public class ServicePublicite implements IPubliciteService {
 		User	user = userRepository.findById(idUser).orElse(null);
 	
 		publicite.setUser(user);
-		 
+	this.emailService.sendSimpleMessage("merghed.rayen@esprit.tn", "Nouvelle Publicité ajoutée " 
+				+ publicite.getNom(), "La nouvelle publicité est de "+ publicite.getDateDebut()+"jusqu'à"+publicite.getDateFin());
 		return pr.save(publicite);
+
 	}
+
 
 	@Override
 	public List<Publicite> retrieveAllPublicite() {
@@ -72,7 +78,7 @@ public class ServicePublicite implements IPubliciteService {
 		else return 200;
 	}
 		public float diffDays (String dateDebut, String dateFin) {
-			SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 			float diffDays = 0;
 			try {
 				Date dateD = sdf.parse(dateDebut);
@@ -105,7 +111,7 @@ public class ServicePublicite implements IPubliciteService {
 	@Override
 	public float TotalCost(String Canal, String dateDebut, String dateFin) {
 		float cost = CanalCost(Canal);
-		cost += DaysCost(dateDebut, dateFin);
+	cost += DaysCost(dateDebut, dateFin);
 		return cost;
 	}
 	@Override

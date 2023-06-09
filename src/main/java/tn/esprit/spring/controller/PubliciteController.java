@@ -67,6 +67,9 @@ public class PubliciteController {
 	@PutMapping("/modify-publicite")
 	@ResponseBody
 	public Publicite modifyPublicite(@RequestBody Publicite publicite) {
+		ServicePublicite.updatePublicite(publicite);
+		publicite.setPrixPublicite(ServicePublicite.TotalCost(publicite.getCanal().toString(),publicite
+				.getDateDebut().toString(),publicite.getDateFin().toString()));
 		return ServicePublicite.updatePublicite(publicite);
 	}
 	@PostMapping("/totalCost/{Canal}/{dateD}/{dateF}/")
